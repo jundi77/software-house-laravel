@@ -1,4 +1,3 @@
-# software-house-laravel
 Penugasan Laravel &amp; Git Software House HMTC ITS
 =======
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
