@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             //$table->$users->name;
-            $table->string('question');
+            $table->longtext('question');
             $table->timestamps();
         });
     }
