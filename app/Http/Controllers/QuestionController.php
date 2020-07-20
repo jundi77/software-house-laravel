@@ -15,16 +15,6 @@ class QuestionController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
-    {
-        if($request->has('search')){
-            // cek kalau mau mencari pertanyaan
-
-        }else {
-            // user mau menampilkan semua pertanyaan
-        }
-    }
-
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
