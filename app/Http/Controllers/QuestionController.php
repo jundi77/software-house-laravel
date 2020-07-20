@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Question;
@@ -15,6 +16,7 @@ class QuestionController extends Controller
         $this->middleware('auth');
     }
 
+  
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
@@ -22,5 +24,15 @@ class QuestionController extends Controller
             'question' => $request->question
         ]);
         return redirect()->back();
+    }
+  
+    public function index(Request $request)
+    {
+        if($request->has('search')){
+            // cek kalau mau mencari pertanyaan
+
+        }else {
+            // user mau menampilkan semua pertanyaan
+        }
     }
 }
