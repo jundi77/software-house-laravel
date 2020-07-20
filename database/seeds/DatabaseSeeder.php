@@ -16,6 +16,15 @@ class DatabaseSeeder extends Seeder
 		    'name' => 'AkunTest',
 		    'email' => 'test@gmail.com',
 		    'password' => Hash::make('password'),
-	    ]);
+        ]);
+        DB::table('questions')->insert([
+            'user_id' => 1,
+            'question' => 'Apakah ini test?',
+        ]);
+        DB::table('answers')->insert([
+            'user_id' => 1,
+            'question_id' => 1,
+            'answer' => 'Ya.',
+        ]);
     }
 }
