@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Question;
+use App\Answer;
 use Illuminate\Support\Facades\Auth;
 
-class QuestionController extends Controller
+class AnswerController extends Controller
 {
     //check apakah sudah login
     public function __construct()
@@ -16,23 +15,12 @@ class QuestionController extends Controller
         $this->middleware('auth');
     }
 
-  
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
-        Question::create([
-            'question' => $request->question
+        Answer::create([
+            'answer' => $request->answer
         ]);
         return redirect()->back();
-    }
-  
-    public function index(Request $request)
-    {
-        if($request->has('search')){
-            // cek kalau mau mencari pertanyaan
-
-        }else {
-            // user mau menampilkan semua pertanyaan
-        }
     }
 }
