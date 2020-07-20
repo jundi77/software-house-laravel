@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class CreateQuestionsTable extends Migration
 {
@@ -13,9 +14,11 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('questions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+            $table->$user_id;
+            $table->bigIncrements('id_question');
+            //$table->$users->name;
             $table->string('question');
             $table->timestamps();
         });

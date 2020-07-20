@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class CreateAnswersTable extends Migration
 {
@@ -13,9 +14,11 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
+
         Schema::create('answers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+            $table->$user_id;
+            $table->bigIncrements('id_answer');
+            //$table->$users->name;
             $table->string('answer');
             $table->timestamps();
         });
