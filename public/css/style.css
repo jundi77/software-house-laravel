@@ -103,7 +103,7 @@ a.btn.btn-second{
     font-weight: 700;
 }
 
-#navbar-site .container #navbarCollapse .navbar-nav .nav-item .nav-link:hover::after{
+#navbar-site .container #navbarCollapse .navbar-nav .nav-item .nav-link:hover::after, #dropdown:hover{
     border-bottom: 2px solid #FF4655;
 }
 
@@ -227,4 +227,27 @@ a.btn.btn-second{
     border: 1px solid #FF4655;
     padding: 11px;
     color: #FF4655;
+}
+
+#dropdown > a{
+    color: white;
+}
+
+#profile-pic{
+    width:50px;
+    height:50px;
+    border-radius: 100%;
+    margin: 10px;
+}
+
+.dropdown-menu{
+    background-color: #111111 !important;
+}
+
+.dropdown-item{
+    color: white !important;
+}
+
+.dropdown-item:hover{
+    color: #292929 !important;
 }

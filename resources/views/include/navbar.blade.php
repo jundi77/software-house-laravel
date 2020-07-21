@@ -7,33 +7,61 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            @if (Auth::check())
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Tanya Tanya</a>
-                </li>                
-            </ul> 
-            <p class="navbar-nav">profil</p>
-            <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-inline ml-4 my-2 my-md-0">
-                @csrf
-                <button class="btn btn-second" type="submit">Keluar</a>
-            </form>
-            @else
-            <div id="navbar-button" class="d-inline ml-4 my-2 my-md-0 ml-auto">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                    <a class="btn btn-prim text-prim" href="{{route('register')}}">Daftar</a>
+                </li>
+                @auth                            
+                    <li class="nav-item dropdown" id="dropdown">
+                        <img src="{{asset('storage/'.Auth::user()->profile_picture_path)}}" id="profile-pic" alt="">
+                        <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item">Action</a>
+                            <a class="dropdown-item">Another action</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                Keluar
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>                        
                     </li>
-                    &emsp;
-                    <li class="nav-item">
-                    <a class="btn btn-second" href="{{route('login')}}">Masuk</a>
-                    </li>                
-                </ul>
-            </div>
-            @endif
+                @else
+                    <div id="navbar-button" class="d-inline ml-4 my-2 my-md-0">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                            <a class="btn btn-prim text-prim" href="{{route('register')}}">Daftar</a>
+                            </li>
+                            &emsp;
+                            <li class="nav-item">
+                            <a class="btn btn-second" href="{{route('login')}}">Masuk</a>
+                            </li>                
+                        </ul>
+                    </div>
+                @endauth
+            </ul>            
+                
         </div>
     </div>
 </nav>
+<script>
+    const dropdown = document.getElementById('dropdown');
+    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+    
+    dropdown.onmouseover = (e) => {
+        dropdown.setAttribute("aria-expanded", true);
+        e.target.classList.add("show");
+        dropdownMenu.classList.add("show");
+    }
+    dropdown.onmouseout = (e) => {
+        dropdown.setAttribute("aria-expanded", true);
+        e.target.classList.remove("show");
+        dropdownMenu.classList.remove("show");
+    }
+</script>

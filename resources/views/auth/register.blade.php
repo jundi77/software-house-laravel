@@ -9,13 +9,13 @@
                     <div class="card-header text-center register-header">{{ __('Daftar') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
                                 <div class="col-md-6" style="margin:auto">
                                     <div class="image-preview" id="imagePreview">
-                                        <input id="profile_pic" type="file" class="form-control @error('profile_pic') is-invalid @enderror" name="profile_pic" value="{{ old('profile_pic') }}" required>
+                                        <input id="profile_pic" type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control @error('profile_pic') is-invalid @enderror" name="profile_pic" value="{{ old('profile_pic') }}" required>
                                         <img src="" alt="Foto Profile" class="image-preview-photo">                                        
                                         <span class="image-preview-text">
                                             <i class="fa fa-download"></i>
