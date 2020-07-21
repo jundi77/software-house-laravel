@@ -28,8 +28,7 @@ class AnswerController extends Controller
 
     public function answers_from_self()
     {
-        $answers = DB::table('answers')
-                                ->select('answers.id as answers_id',
+        $answers = Answer::select('answers.id as answer_id',
                                          'answers.user_id as author_id',
                                          'answer',
                                          'answers.question_id',
