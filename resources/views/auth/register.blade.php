@@ -96,7 +96,7 @@
 
                             <div class="form-group row mb-3 mt-5">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-second">
+                                    <button type="submit" class="btn btn-prim">
                                         {{ __('Daftar') }}
                                     </button>
                                 </div>
