@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Question;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -30,14 +31,13 @@ class QuestionController extends Controller
   
     public function index(Request $request)
     {
-        $questions = DB::table('questions')
-                                ->select('questions.id as question_id',
+        $questions = Question::select('questions.id as question_id',
                                          'questions.user_id as author_id',
                                          'question',
                                          'questions.created_at',
-                                         'questions.updated_at',
-                                         'users.name as author_name',
-                                         'users.profile_picture_path')
+                                         'questions.updated_at',)
+                                ->addSelect(['name','profile_picture_path'],
+                                            User::whereColumn('user_id','users.id'))
                                 ->leftJoin('users','user_id','=','users.id');
 
         if($request->has('search')){
@@ -48,8 +48,7 @@ class QuestionController extends Controller
 
     public function questions_from_self()
     {
-        $questions = DB::table('questions')
-                                ->select('questions.id as question_id',
+        $questions = Question::select('questions.id as question_id',
                                          'questions.user_id as author_id',
                                          'question',
                                          'questions.created_at',
