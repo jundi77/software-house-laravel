@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('landing-page');
 Auth::routes();
 
 // q itu question, a itu answer
