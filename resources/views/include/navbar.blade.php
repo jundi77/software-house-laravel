@@ -7,7 +7,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            @auth
+            @if (Auth::check())
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="">Home</a>
@@ -16,8 +16,6 @@
                     <a class="nav-link" href="">Tanya Tanya</a>
                 </li>                
             </ul> 
-            @endauth
-            @if (Auth::check())
             <p class="navbar-nav">profil</p>
             <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-inline ml-4 my-2 my-md-0">
                 @csrf
