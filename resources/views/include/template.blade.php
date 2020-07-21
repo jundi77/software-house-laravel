@@ -17,7 +17,7 @@
 </head>
 <body> 
     @include('include.navbar')
-    <main>        
+    <main class="main">        
         @yield('content')
     </main>
 </body>
