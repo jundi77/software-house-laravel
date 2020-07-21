@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Question;
 use App\User;
+use App\Answer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -66,10 +67,20 @@ class QuestionController extends Controller
         return $questions;
     }
 
-    public function latest_question()
+    public function displayLatestQuestion()
     {
-        $questions = Question::orderBy('created_at', 'desc')->get();
+        $questions = Question::orderBy('created_at', 'desc')->paginate(10);
 
         return view('question.question', compact('questions'));
+    }
+
+    public function showQuestionWithAnswer($question_id)
+    {
+        $answers = Answer::find($question_id);
+        $question = Question::find($question_id);
+        if (!is_null($answers)) {
+            $answers = $answers->paginate(15);
+        }
+        return view('question.QuestionWithAnswer',compact('answers','question'));
     }
 }

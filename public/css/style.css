@@ -259,7 +259,23 @@ a.btn.btn-second{
 
 .question-summary{
     padding: 20px 35px;
-    border-bottom: 1px solid #777777;
+    border-bottom: 1px solid rgb(228, 230, 232);
+}
+
+.question-summary:hover{
+    background-color: #e5e5e5;
+    border-left: 1px solid #FF4655;
+}
+
+.question-description .question-summary:hover{
+    background-color: #e5e5e5;
+    border-left: 4px solid rgb(200, 204, 208);
+}
+
+.question-description .question .question-title{
+    color: rgb(36, 39, 41) !important;
+    font-weight: initial;
+    font-size: 18px;
 }
 
 .big-title{
@@ -272,10 +288,16 @@ a.btn.btn-second{
     font-size: 50px;    
 }
 
+.question-description .question-profile{
+    justify-content: flex-end;
+    padding-bottom: 0px;
+    display: flex;
+}
+
 .question .question-title{
     font-weight: 600;
     font-size: 20px;
-    color: rgb(0, 119, 204);;
+    color: rgb(0, 119, 204);
 }
 
 .question-wrapper{
@@ -288,9 +310,72 @@ a.btn.btn-second{
 }
 
 .question-list{
-    border-top: 1px solid #777777;
+    border-top: 1px solid rgb(228, 230, 232);
 }
 
-.question-wrapper h2{
+.question-wrapper > h2{
     margin-bottom: 40px;
+    color: rgb(60, 65, 70);
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.page-item.active .page-link{
+    background-color: #FF4655;
+    border-color: transparent;
+}
+
+.page-link{
+    color: #FF4655;
+    border: 1px solid transparent;
+}
+
+.page-link:hover{
+    background-color: #e5e5e5;
+    color: white;
+    border: 1px solid transparent;
+}
+
+.page-item.disabled .page-link{
+    color: #FF4655;
+    border-color: transparent;
+}
+
+.question-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.question-profile{
+    display: flex;
+    justify-content: left;
+    padding-bottom: 30px;
+}
+
+.question-information{
+    border-bottom: 1px solid rgb(228, 230, 232);
+}
+
+.question-description{
+    padding: 20px;
+}
+
+.question-desc > p:first-child{
+    color: rgb(36, 39, 41) !important;
+    margin-bottom: 100px;
+}
+
+.question-profile > img{
+    border-radius: 100%; 
+    margin-right:10px;
+}
+
+.question-profile > p{
+    margin:auto 0;
+    color:rgb(0, 119, 204);
+}
+

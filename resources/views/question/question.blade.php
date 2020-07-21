@@ -8,20 +8,22 @@
                     <div class="question-wrapper">
                         <h2>Pertanyaan Terbaru</h2>
                         <div class="question-list">
-                            @foreach ($questions as $question)
+                            @forelse ($questions as $question)
                                 <div class="question-summary">
                                     <div class="big-title">
                                         <h2>Q</h2>
                                     </div>
                                     <div class="question">
-                                        <a href="" class="question-title">{{$question->title}}</a>
+                                        <a href="{{route('question.show',['id'=> $question->id])}}" class="question-title">{{$question->title}}</a>
                                         <p class="question-time">ditanyakan {{$question->created_at->diffForHumans()}} oleh {{$question->user->username}}</p>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                            @endforelse
                         </div>
                     </div>
                 </div>
+                {{$questions->links()}}
             </div>
         </div>
     </section>

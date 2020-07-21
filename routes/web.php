@@ -14,8 +14,9 @@
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('landing-page');
+    return view('homepage');
+})->name('homepage');
+
 Auth::routes();
 
 // q itu question, a itu answer
@@ -30,4 +31,5 @@ Route::post('store','AnswerController@store')->name('store');
 
 Route::get('/q', 'QuestionController@index')->name('question');
 
-Route::get('/pertanyaan', 'QuestionController@latest_question')->name('question.show_all');
+Route::get('/pertanyaan', 'QuestionController@displayLatestQuestion')->name('question.show_all');
+Route::get('/pertanyaan/{id}', 'QuestionController@showQuestionWithAnswer')->name('question.show');

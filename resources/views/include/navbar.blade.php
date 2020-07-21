@@ -1,6 +1,6 @@
 <nav id="navbar-site" class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:#111111">
     <div class="container">
-        <a class="navbar-brand" href="{{route('landing-page')}}">
+        <a class="navbar-brand" href="{{route('homepage')}}">
             <img src="{{URL::to('img/logo2.png')}}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse">
@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
+                    <a class="nav-link" href="{{route('homepage')}}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('question.show_all')}}">Tanya Tanya</a>
