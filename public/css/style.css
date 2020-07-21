@@ -18,7 +18,7 @@ body{
     letter-spacing: 1px;
     position: relative;
     display: inline-block;
-    text-transform: capitalize;
+    text-transform: capitalize;    
 }
 
 .welcome-text::after{
@@ -246,8 +246,51 @@ a.btn.btn-second{
 
 .dropdown-item{
     color: white !important;
+    cursor: pointer;
 }
 
 .dropdown-item:hover{
     color: #292929 !important;
+}
+
+.question-section{
+    padding-top: 150px;
+}
+
+.question-summary{
+    padding: 20px 35px;
+    border-bottom: 1px solid #777777;
+}
+
+.big-title{
+    float: left;
+    color: #FF4655;
+    padding-right: 40px;
+}
+
+.big-title h2{
+    font-size: 50px;    
+}
+
+.question .question-title{
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(0, 119, 204);;
+}
+
+.question-wrapper{
+    width: 100%;
+}
+
+.question-time{
+    text-align: end;
+    font-size: 13px;
+}
+
+.question-list{
+    border-top: 1px solid #777777;
+}
+
+.question-wrapper h2{
+    margin-bottom: 40px;
 }

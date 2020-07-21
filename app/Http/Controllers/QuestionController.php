@@ -33,7 +33,7 @@ class QuestionController extends Controller
     {
         $questions = Question::select('questions.id as question_id',
                                          'questions.user_id as author_id',
-                                         'question',
+                                         'title','description',
                                          'questions.created_at',
                                          'questions.updated_at',)
                                 ->addSelect(['name','profile_picture_path'],
@@ -50,7 +50,7 @@ class QuestionController extends Controller
     {
         $questions = Question::select('questions.id as question_id',
                                          'questions.user_id as author_id',
-                                         'question',
+                                         'title','description',
                                          'questions.created_at',
                                          'questions.updated_at',)
                                 ->where('questions.user_id','=',Auth::user()->id)
@@ -64,5 +64,12 @@ class QuestionController extends Controller
          *  return dd($questions, Auth::user()->id, Auth::user()->name, Auth::user()->profile_picture_path);
          */
         return $questions;
+    }
+
+    public function latest_question()
+    {
+        $questions = Question::orderBy('created_at', 'desc')->get();
+
+        return view('question.question', compact('questions'));
     }
 }

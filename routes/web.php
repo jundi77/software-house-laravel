@@ -29,3 +29,5 @@ Route::post('store','QuestionController@store')->name('store');
 Route::post('store','AnswerController@store')->name('store');
 
 Route::get('/q', 'QuestionController@index')->name('question');
+
+Route::get('/pertanyaan', 'QuestionController@latest_question')->name('question.show_all');

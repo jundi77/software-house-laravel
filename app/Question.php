@@ -8,4 +8,14 @@ class Question extends Model
 {
     //
     protected $fillable =['question'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
 }

@@ -12,7 +12,7 @@
                     <a class="nav-link" href="">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Tanya Tanya</a>
+                    <a class="nav-link" href="{{route('question.show_all')}}">Tanya Tanya</a>
                 </li>
                 @auth                            
                     <li class="nav-item dropdown" id="dropdown">
@@ -32,7 +32,9 @@
                             </form>
                         </div>                        
                     </li>
-                @else
+                    @endauth
+                </ul>
+                @guest
                     <div id="navbar-button" class="d-inline ml-4 my-2 my-md-0">
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -44,24 +46,25 @@
                             </li>                
                         </ul>
                     </div>
-                @endauth
-            </ul>            
+                @endguest
                 
         </div>
     </div>
 </nav>
 <script>
     const dropdown = document.getElementById('dropdown');
-    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+    const dropdownMenu = document.getElementsByClassName('dropdown-menu')[0];
     
-    dropdown.onmouseover = (e) => {
-        dropdown.setAttribute("aria-expanded", true);
-        e.target.classList.add("show");
-        dropdownMenu.classList.add("show");
-    }
-    dropdown.onmouseout = (e) => {
-        dropdown.setAttribute("aria-expanded", true);
-        e.target.classList.remove("show");
-        dropdownMenu.classList.remove("show");
+    if (dropdownMenu) {
+        dropdown.onmouseover = (e) => {
+            dropdown.setAttribute("aria-expanded", true);
+            e.target.classList.add("show");
+            dropdownMenu.classList.add("show");
+        }
+        dropdown.onmouseout = (e) => {
+            dropdown.setAttribute("aria-expanded", true);
+            e.target.classList.remove("show");
+            dropdownMenu.classList.remove("show");
+        }
     }
 </script>
