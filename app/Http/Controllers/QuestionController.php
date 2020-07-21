@@ -63,5 +63,6 @@ class QuestionController extends Controller
          *  
          *  return dd($questions, Auth::user()->id, Auth::user()->name, Auth::user()->profile_picture_path);
          */
+        return $questions;
     }
 }

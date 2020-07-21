@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers;
 
 class HomeController extends Controller
 {
@@ -21,7 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index_for_questions()
+    {
+        $QuestionController = new QuestionController;
+        $questions = $QuestionController->questions_from_self();
+        return view('home');
+    }
+    
+    public function index_for_answers()
     {
         return view('home');
     }
