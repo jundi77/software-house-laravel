@@ -38,8 +38,7 @@ class QuestionController extends Controller
                                          'questions.created_at',
                                          'questions.updated_at',)
                                 ->addSelect(['name','profile_picture_path'],
-                                            User::whereColumn('user_id','users.id'))
-                                ->leftJoin('users','user_id','=','users.id');
+                                            User::whereColumn('user_id','users.id'));
 
         if($request->has('search')){
             // cek kalau mau mencari pertanyaan
