@@ -9,6 +9,7 @@ use App\Question;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
 class QuestionController extends Controller
 {
     //check apakah sudah login

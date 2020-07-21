@@ -31,6 +31,8 @@ class HomeController extends Controller
     
     public function index_for_answers()
     {
+        $AnswerController = new AnswerController;
+        $answers = $AnswerController->answers_from_self();
         return view('home');
     }
 }

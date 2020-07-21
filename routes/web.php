@@ -18,7 +18,11 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index_for_questions')->name('home');
+// q itu question, a itu answer
+
+Route::get('/home', 'HomeController@index_for_questions')->name('home_q');
+
+Route::get('/home/a', 'HomeController@index_for_answers')->name('home_a');
 
 Route::post('store','QuestionController@store')->name('store');
 
