@@ -43,6 +43,25 @@ class QuestionController extends Controller
             // cek kalau mau mencari pertanyaan
             $questions = $questions->where('question', 'like', '%'.$request->search.'%');
         }
-        return dd($questions->get());
+    }
+
+    public function questions_from_self()
+    {
+        $questions = DB::table('questions')
+                                ->select('questions.id as question_id',
+                                         'questions.user_id as author_id',
+                                         'question',
+                                         'questions.created_at',
+                                         'questions.updated_at',)
+                                ->where('questions.user_id','=',Auth::user()->id)
+                                ->orderBy('created_at','desc')
+                                ->get();
+        /*
+         *  Untuk user_id, profile_picture_path, dan author_name
+         *  bisa menggunakan value yang sudah ada di
+         *  Auth::user().
+         *  
+         *  return dd($questions, Auth::user()->id, Auth::user()->name, Auth::user()->profile_picture_path);
+         */
     }
 }
