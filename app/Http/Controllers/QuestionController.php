@@ -30,32 +30,18 @@ class QuestionController extends Controller
         return redirect()->back();
     }
   
-    public function index(Request $request)
+    public function search(Request $request)
     {
-        $questions = Question::select('questions.id as question_id',
-                                         'questions.user_id as author_id',
-                                         'title','description',
-                                         'questions.created_at',
-                                         'questions.updated_at',)
-                                ->addSelect(['name','profile_picture_path'],
-                                            User::whereColumn('user_id','users.id'));
-
-        if($request->has('search')){
-            // cek kalau mau mencari pertanyaan
-            $questions = $questions->where('question', 'like', '%'.$request->search.'%');
-        }
+        $questions = Question::where('title', 'like', '%'.$request->search.'%')->paginate(10)->appends(request()->except('page'));
+        // return dd($request->url());
+        return view('question.questionSearch',compact('questions','request'));
     }
 
     public function questions_from_self()
     {
-        $questions = Question::select('questions.id as question_id',
-                                         'questions.user_id as author_id',
-                                         'title','description',
-                                         'questions.created_at',
-                                         'questions.updated_at',)
-                                ->where('questions.user_id','=',Auth::user()->id)
+        $questions = Question::where('questions.user_id','=',Auth::user()->id)
                                 ->orderBy('created_at','desc')
-                                ->get();
+                                ->paginate(10);
         /*
          *  Untuk user_id, profile_picture_path, dan author_name
          *  bisa menggunakan value yang sudah ada di

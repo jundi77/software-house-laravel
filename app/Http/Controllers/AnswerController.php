@@ -28,15 +28,9 @@ class AnswerController extends Controller
 
     public function answers_from_self()
     {
-        $answers = Answer::select('answers.id as answer_id',
-                                         'answers.user_id as author_id',
-                                         'answer',
-                                         'answers.question_id',
-                                         'answers.created_at',
-                                         'answers.updated_at',)
-                                ->where('answers.user_id','=',Auth::user()->id)
+        $answers = Answer::where('answers.user_id','=',Auth::user()->id)
                                 ->orderBy('created_at','desc')
-                                ->get();
+                                ->paginate(10);
         /*
          *  Untuk user_id, profile_picture_path, dan author_name
          *  bisa menggunakan value yang sudah ada di

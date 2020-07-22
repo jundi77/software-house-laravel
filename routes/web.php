@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('homepage');
@@ -31,5 +32,11 @@ Route::post('store','AnswerController@store')->name('store');
 
 Route::get('/q', 'QuestionController@index')->name('question');
 
-Route::get('/pertanyaan', 'QuestionController@displayLatestQuestion')->name('question.show_all');
+Route::get('/pertanyaan', function(Request $request){
+    if($request->has('search')){
+        return App::call('App\Http\Controllers\QuestionController@search');
+    }else {
+        return App::call('App\Http\Controllers\QuestionController@displayLatestQuestion');
+    }
+})->name('question.show_all');
 Route::get('/pertanyaan/{id}', 'QuestionController@showQuestionWithAnswer')->name('question.show');
