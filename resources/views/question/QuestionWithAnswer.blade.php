@@ -1,5 +1,5 @@
 @extends('include.template')
-
+@section('title','Jawaban untuk "'.$question->title.'"')
 @section('content')
     <section class="question-section">
         <div class="container">
