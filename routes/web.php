@@ -26,17 +26,27 @@ Route::get('/home', 'HomeController@index_for_questions')->name('home_q');
 
 Route::get('/home/a', 'HomeController@index_for_answers')->name('home_a');
 
-Route::post('store','QuestionController@store')->name('store');
-
-Route::post('store','AnswerController@store')->name('store');
+Route::prefix('jawaban')->group(function ()
+{
+    Route::post('/store','AnswerController@store')->name('answer.store');
+    Route::post('/update/{id}','AnswerController@update')->name('answer.update');
+    Route::post('/delete/{id}','AnswerController@delete')->name('answer.delete');
+});
 
 Route::get('/q', 'QuestionController@index')->name('question');
 
+Route::prefix('pertanyaan')->group(function()
+{
+    Route::get('/', 'QuestionController@displayLatestQuestion')->name('question.show_all');
+    Route::get('/{id}', 'QuestionController@showQuestionWithAnswer')->name('question.show');
+    Route::post('/store', 'QuestionController@store')->name('question.store');
+    Route::post('/update/{id}', 'QuestionController@update')->name('question.update');
+    Route::post('/delete/{id}', 'QuestionController@delete')->name('question.delete');
+});
 Route::get('/pertanyaan', function(Request $request){
     if($request->has('search')){
         return App::call('App\Http\Controllers\QuestionController@search');
-    }else {
         return App::call('App\Http\Controllers\QuestionController@displayLatestQuestion');
+    }else {
     }
 })->name('question.show_all');
-Route::get('/pertanyaan/{id}', 'QuestionController@showQuestionWithAnswer')->name('question.show');

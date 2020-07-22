@@ -29,6 +29,14 @@ class QuestionController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function edit($id)
+    {        
+        Question::where([
+            'question' => $request->question
+        ]);
+        return redirect()->back();
+    }
   
     public function search(Request $request)
     {

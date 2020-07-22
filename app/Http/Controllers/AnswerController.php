@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Answer;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -21,9 +22,26 @@ class AnswerController extends Controller
     {
         $user_id = Auth::user()->id;
         Answer::create([
-            'answer' => $request->answer
+            'answer' => $request->answer,
+            'user_id' => $user_id,
+            'question_id' => $request->question_id
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success','Jawaban berhasil ditambahkan');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $answer = Answer::find($id);
+        $answer->answer = $request->input('answer');
+        $answer->updated_at = Carbon::now();
+        $answer->save();
+        return redirect()->back()->with('success', 'Jawaban berhasil diubah');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $answer = Answer::find($id)->delete();        
+        return redirect()->back()->with('success', 'Jawaban berhasil dihapus');
     }
 
     public function answers_from_self()
