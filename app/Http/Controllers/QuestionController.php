@@ -25,17 +25,25 @@ class QuestionController extends Controller
     {
         $user_id = Auth::user()->id;
         Question::create([
-            'question' => $request->question
+            'question' => $request->question,
+            'user_id' => $user_id
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success','Pertanyaan berhasil ditambahkan');
     }
 
-    public function edit($id)
-    {        
-        Question::where([
-            'question' => $request->question
-        ]);
-        return redirect()->back();
+    public function update(Request $request, $id)
+    {
+        $question = Question::find($id);
+        $question->question = $request->input('question');
+        $question->updated_at = Carbon::now();
+        $question->save();
+        return redirect()->back()->with('success', 'Pertanyaan berhasil diubah');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $question = Question::find($id)->delete();        
+        return redirect()->back()->with('success', 'Pertanyaan berhasil dihapus');
     }
   
     public function search(Request $request)
