@@ -20,7 +20,7 @@
                         <div class="question-description">
                             <div class="question-desc">
                                 <p>{{$question->description}}</p>
-                                <p><strong>{{$answers->count()}} Jawaban</strong></p>
+                                <p><strong>{{$answers? $answers->count() : 0}} Jawaban</strong></p>
                             </div>
                             <div class="question-list">
                                 @if ($answers)
