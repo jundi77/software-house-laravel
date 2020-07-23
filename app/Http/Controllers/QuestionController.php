@@ -77,7 +77,7 @@ class QuestionController extends Controller
 
     public function showQuestionWithAnswer($question_id)
     {
-        $answers = Answer::find($question_id);
+        $answers = Answer::where('question_id',$question_id);
         $question = Question::find($question_id);
         if (!is_null($answers)) {
             $answers = $answers->paginate(15);

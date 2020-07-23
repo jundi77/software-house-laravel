@@ -94,7 +94,7 @@
                                 <h3>Jawaban Anda</h3>
                                 <textarea name="answer" id="answer" cols="30" rows="10" required></textarea>
                                 <input type="hidden" name="question_id" value="{{$question->id}}">
-                                <button class="btn btn-prim" type="submit">Tampilkan Jawaban Saya</button>
+                                <button class="btn btn-prim" type="submit">Submit</button>
                             </form>
                         </div>
                     </div>
