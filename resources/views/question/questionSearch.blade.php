@@ -7,10 +7,13 @@
                 <div class="row">
                     <div class="question-wrapper">
                         <h2>Mencari Pertanyaan</h2>
-                        {{-- form --}}
-                        <form action="{{route('question.show_all')}}" method="get">
-                            <input type="text" name="search" id="inpage-search" value="{{$request->search}}">
-                            <button type="submit"></button>
+                        <form action="{{route('question.show_all')}}" method="get" id="search-navbar">
+                            <div class="input-group" style="width: 50rem;">
+                                <input class="form-control" type="text" name="search" id="search-navbar-input" placeholder="Cari pertanyaan..." value="{{$request->search}}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-dark" type="submit">Cari</button>
+                                </div>
+                            </div>
                         </form>
                         <div class="question-list">
                             @forelse ($questions as $question)
