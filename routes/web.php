@@ -37,16 +37,13 @@ Route::get('/q', 'QuestionController@index')->name('question');
 
 Route::prefix('pertanyaan')->group(function()
 {
-    Route::get('/', 'QuestionController@displayLatestQuestion')->name('question.show_all');
+    Route::get('/', function(Request $request)
+    {
+        if($request->has('search')) return App::call('App\Http\Controllers\QuestionController@search');
+        return App::call('App\Http\Controllers\QuestionController@displayLatestQuestion');
+    })->name('question.show_all');
     Route::get('/{id}', 'QuestionController@showQuestionWithAnswer')->name('question.show');
     Route::post('/store', 'QuestionController@store')->name('question.store');
     Route::post('/update/{id}', 'QuestionController@update')->name('question.update');
     Route::post('/delete/{id}', 'QuestionController@delete')->name('question.delete');
 });
-Route::get('/pertanyaan', function(Request $request){
-    if($request->has('search')){
-        return App::call('App\Http\Controllers\QuestionController@search');
-        return App::call('App\Http\Controllers\QuestionController@displayLatestQuestion');
-    }else {
-    }
-})->name('question.show_all');
