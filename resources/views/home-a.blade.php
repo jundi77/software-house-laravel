@@ -6,32 +6,31 @@
             <div class="row">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('home_q')}}">Pertanyaanmu</a>
+                        <a class="nav-link" href="{{route('home_q')}}">Pertanyaanmu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home_a')}}">Jawabanmu</a>
+                        <a class="nav-link active" href="{{route('home_a')}}">Jawabanmu</a>
                     </li>
                   </ul>
             </div>
             <div class="row mt-3">
                 <div class="top">
                     <h2>
-                        Pertanyaan Darimu
+                        Jawaban Darimu
                     </h2>
                 </div>
-                <button class="btn btn-second ml-auto">Buat Pertanyaan</button>
             </div>
             <div class="row">
                 <div class="question-wrapper mt-5 pt-3  ">
                     <div class="question-list">
-                        @forelse ($questions as $question)
+                        @forelse ($answers as $answer)
                             <div class="question-summary">
-                                <div class="big-title">
-                                    <h2>Q</h2>
+                                <div class="big-title" style="color: green;">
+                                    <h2>A</h2>
                                 </div>
                                 <div class="question">
-                                    <a href="{{route('question.show',['id'=> $question->id])}}" class="question-title">{{$question->title}}</a>
-                                    <p class="question-time">ditanyakan {{$question->created_at->diffForHumans()}}</p>
+                                    <a href="{{route('question.show',['id'=> $answer->question_id])}}" class="question-title">{{$answer->answer}}</a>
+                                    <p class="question-time">ditanyakan {{$answer->created_at->diffForHumans()}}</p>
                                 </div>
                             </div>
                         @empty
@@ -39,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            {{$questions->links()}}
+            {{$answers->links()}}
         </div>
     </div>
 </section>

@@ -33,6 +33,6 @@ class HomeController extends Controller
     {
         $AnswerController = new AnswerController;
         $answers = $AnswerController->answers_from_self();
-        return view('home');
+        return view('home-a',compact('answers'));
     }
 }
