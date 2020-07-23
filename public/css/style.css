@@ -230,7 +230,12 @@ a.btn.btn-second{
     color: #FF4655;
 }
 
-#dropdown > a{
+#search-navbar {
+    width: 20rem;
+    padding: 0.5rem;
+}
+
+#dropdown-account > a{
     color: white;
 }
 

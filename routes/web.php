@@ -39,8 +39,9 @@ Route::prefix('pertanyaan')->group(function()
 {
     Route::get('/', function(Request $request)
     {
-        if($request->has('search')) return App::call('App\Http\Controllers\QuestionController@search');
-        return App::call('App\Http\Controllers\QuestionController@displayLatestQuestion');
+        if($request->has('search') and !empty($request->search)){
+            return App::call('App\Http\Controllers\QuestionController@search');
+        }return App::call('App\Http\Controllers\QuestionController@displayLatestQuestion');
     })->name('question.show_all');
     Route::get('/{id}', 'QuestionController@showQuestionWithAnswer')->name('question.show');
     Route::post('/store', 'QuestionController@store')->name('question.store');

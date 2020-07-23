@@ -14,13 +14,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('question.show_all')}}">Tanya Tanya</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown">Cari</a>
+                        <form action="{{route('question.show_all')}}" method="get" id="search-navbar" class="dropdown-menu dropdown-menu-right">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="search" id="search-navbar-input" placeholder="Cari pertanyaan..." size=50>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-light" type="submit">Cari</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
                 @auth                            
-                    <li class="nav-item dropdown" id="dropdown">
+                    <li class="nav-item dropdown" id="dropdown-account">
                         <img src="{{asset('storage/'.Auth::user()->profile_picture_path)}}" id="profile-pic" alt="">
                         <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
                         </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">Action</a>
+                        <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu-account">
+                            <a class="dropdown-item">Buat Pertanyaan</a>
                             <a class="dropdown-item">Another action</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -52,8 +64,8 @@
     </div>
 </nav>
 <script>
-    const dropdown = document.getElementById('dropdown');
-    const dropdownMenu = document.getElementsByClassName('dropdown-menu')[0];
+    const dropdown = document.getElementById('dropdown-account');
+    const dropdownMenu = document.getElementById('dropdown-menu-account');
     
     if (dropdownMenu) {
         dropdown.onmouseover = (e) => {
