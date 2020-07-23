@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $QuestionController = new QuestionController;
         $questions = $QuestionController->questions_from_self();
-        return view('home');
+        return view('home', compact('questions'));
     }
     
     public function index_for_answers()
