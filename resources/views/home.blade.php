@@ -4,8 +4,9 @@
     <div class="container">
         <div class="col-md-12">
             <div class="row">
-                <div class="question-wrapper">
-                    <h2>Pertanyaan Darimu</h2>
+                <h2>Pertanyaan Darimu</h2>
+                <button class="btn btn-second ml-auto">Buat Pertanyaan</button>
+                <div class="question-wrapper mt-5 pt-3">
                     <div class="question-list">
                         @forelse ($questions as $question)
                             <div class="question-summary">
