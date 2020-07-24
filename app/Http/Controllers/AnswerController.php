@@ -38,6 +38,7 @@ class AnswerController extends Controller
             $answer->save();
             return redirect()->back()->with('success', 'Jawaban berhasil diubah');
         }
+        return redirect()->back()->with('failed', 'Jawaban gagal diubah');
     }
 
     public function delete(Request $request, $id)
@@ -47,6 +48,7 @@ class AnswerController extends Controller
             $answer->delete();
             return redirect()->back()->with('success', 'Jawaban berhasil dihapus');
         }
+        return redirect()->back()->with('Jawaban gagal dihapus');
     }
 
     public function answers_from_self()

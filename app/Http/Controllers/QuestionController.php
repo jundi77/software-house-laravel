@@ -44,6 +44,7 @@ class QuestionController extends Controller
             $question->save();
             return redirect()->back()->with('success', 'Pertanyaan berhasil diubah');
         }
+        return redirect()->back()->with('failed', 'Pertanyaan gagal dirubah');
     }
 
     public function delete(Request $request, $id)
@@ -53,6 +54,7 @@ class QuestionController extends Controller
             $question->delete();
             return redirect(route('home_q'))->with('success', 'Pertanyaanmu berhasil dihapus');
         }
+        return redirect()->back()->with('failed', 'Pertanyaan gagal dihapus');
     }
   
     public function search(Request $request)
@@ -90,6 +92,9 @@ class QuestionController extends Controller
         $question = Question::find($question_id);
         if (!is_null($answers)) {
             $answers = $answers->paginate(15);
+        }
+        if(is_null($question)) {
+            return redirect(route('question.show_all'));
         }
         return view('question.QuestionWithAnswer',compact('answers','question'));
     }
