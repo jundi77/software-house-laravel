@@ -8,7 +8,12 @@
                 <div class="caption text-center">
                     <h2 class="welcome-text text-white">Komunitas Terbuka TanyaAja</h2>
                     <p class="small-welcome-text">Kami menghubungkan tiap orang yang memiliki rasa penasaran yang tinggi dengan beribu jawaban yang tidak masuk akal</p>
-                    <a href="{{route('register')}}" class="btn btn-second">Gabung Sekarang</a>
+                    @auth
+                        <a href="{{route('question.show_all')}}" class="btn btn-second">Lihat Pertanyaan</a>
+                    @endauth
+                    @guest
+                        <a href="{{route('register')}}" class="btn btn-second">Gabung Sekarang</a>
+                    @endguest
                 </div>
             </div>
         </div>
