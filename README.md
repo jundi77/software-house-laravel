@@ -1,5 +1,16 @@
-Penugasan Laravel &amp; Git Software House HMTC ITS
+Penugasan Laravel &amp; Git Software House HMTC ITS:<br/>Web TanyaAja
 =======
+TanyaAja adalah web forum [laravel](#about-laravel) yang mengaplikasikan 4 fungsi dasar [persistent storage](https://en.wikipedia.org/wiki/Persistence_(computer_science)), [CRUD (create, read, update, delete)](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). Untuk menjalankan web, lakukan langkah-langkah sebagai berikut:
+    
+1. Sesuaikan config dbmu di file <code>/.env</code>.
+1. Periksa dan pasang dependencies dengan menjalankan <code>composer update</code>.
+1. Lakukan migrasi db dengan <code>php artisan migrate</code>.
+1. Link penyimpanan web dengan menjalankan <code>php artisan storage:link</code>.
+1. <i>(opsional)</i> Inisialisasi record db dengan menjalankan <code>php artisan db:seed</code>.
+1. Jalankan web dengan menjalankan <code>php artisan serve</code>.
+
+----
+## <span id="about-laravel">About Laravel</span>
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -8,8 +19,6 @@ Penugasan Laravel &amp; Git Software House HMTC ITS
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
-## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
