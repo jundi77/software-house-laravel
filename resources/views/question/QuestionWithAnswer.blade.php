@@ -30,7 +30,19 @@
                                 <p>{{$question->user->username}}</p>
                             </a>
                         </div>
+                        <!-- edit form  -->
                         <div class="question-description">
+                                <form class="my-question form-group" >
+                                <h3>Edit Deskripsi</h3>
+                                <textarea cols="50" rows="20" name="text" id="question_id" class="form-control" style="resize:vertical;display:none">{{$question->description}}</textarea>
+                                <input type="hidden" name="question">
+                                <div class="question-link"style="float: right">
+                                    <button class="btn btn-prim show_button">Edit</a>
+                                    <button class="btn btn-second delete-question" data-toggle="modal2" data-target="#exampleModal2">Hapus</button>
+                                </div> 
+                                <script>$(".show_button").click(function(){$("#question_id").show()})</script>
+                            </form>
+                        <!-- end edit form -->
                             <div class="question-desc">
                                 <p>{{$question->description}}</p>
                                 <p><strong>{{$answers? $answers->count() : 0}} Jawaban</strong></p>
@@ -152,4 +164,5 @@
             return elem.className.split(' ').indexOf(className) > -1;
         }
     </script>
+
 @endsection

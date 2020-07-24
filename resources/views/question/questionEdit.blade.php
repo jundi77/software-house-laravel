@@ -7,7 +7,6 @@
                 <div class="row">
                     <div class="question-wrapper">
                         <h2>Edit Pertanyaan</h2>
-                        <div class="question-list">
                             @forelse ($questions as $question)
 		                                {{ csrf_field() }}
                                         <form>
