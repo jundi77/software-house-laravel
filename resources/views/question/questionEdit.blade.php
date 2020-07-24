@@ -8,8 +8,8 @@
                     <div class="question-wrapper">
                         <h2>Edit Pertanyaan</h2>
                             @forelse ($questions as $question)
-		                                {{ csrf_field() }}
                                         <form>
+                                            {{ csrf_field() }}
                                             <div class="form-group" action="{{route('question.update',['id' => $question->id])}}" method="post">
                                                 <label for="InputTitle">Title</label>
                                                 <input type="text" name="Title" class="form-control">

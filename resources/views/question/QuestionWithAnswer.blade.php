@@ -33,6 +33,7 @@
                         <!-- edit form  -->
                         <div class="question-description">
                                 <form class="my-question form-group" >
+                                    @csrf
                                 <h3>Edit Deskripsi</h3>
                                 <textarea cols="50" rows="20" name="text" id="question_id" class="form-control" style="resize:vertical;display:none">{{$question->description}}</textarea>
                                 <input type="hidden" name="question">
