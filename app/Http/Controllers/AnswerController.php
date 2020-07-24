@@ -32,16 +32,21 @@ class AnswerController extends Controller
     public function update(Request $request, $id)
     {
         $answer = Answer::find($id);
-        $answer->answer = $request->input('answer');
-        $answer->updated_at = Carbon::now();
-        $answer->save();
-        return redirect()->back()->with('success', 'Jawaban berhasil diubah');
+        if($answer->user_id == Auth::user()->id) {
+            $answer->answer = $request->input('answer');
+            $answer->updated_at = Carbon::now();
+            $answer->save();
+            return redirect()->back()->with('success', 'Jawaban berhasil diubah');
+        }
     }
 
     public function delete(Request $request, $id)
     {
-        $answer = Answer::find($id)->delete();        
-        return redirect()->back()->with('success', 'Jawaban berhasil dihapus');
+        $answer = Answer::find($id);    
+        if($answer->user_id == Auth::user()->id) {
+            $answer->delete();
+            return redirect()->back()->with('success', 'Jawaban berhasil dihapus');
+        }
     }
 
     public function answers_from_self()

@@ -36,16 +36,21 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
         $question = Question::find($id);
-        $question->question = $request->input('question');
-        $question->updated_at = Carbon::now();
-        $question->save();
-        return redirect()->back()->with('success', 'Pertanyaan berhasil diubah');
+        if($question->user_id == Auth::user()->id) {
+            $question->question = $request->input('question');
+            $question->updated_at = Carbon::now();
+            $question->save();
+            return redirect()->back()->with('success', 'Pertanyaan berhasil diubah');
+        }
     }
 
     public function delete(Request $request, $id)
     {
-        $question = Question::find($id)->delete();        
-        return redirect()->back()->with('success', 'Pertanyaan berhasil dihapus');
+        $question = Question::find($id);
+        if($question->user_id == Auth::user()->id) {
+            $question->delete();
+            return redirect()->back()->with('success', 'Pertanyaan berhasil dihapus');
+        }
     }
   
     public function search(Request $request)
