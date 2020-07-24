@@ -103,6 +103,7 @@
                                                                         <div class="modal-footer">
                                                                             <form action="{{route('answer.delete',['id'=> $answer->id])}}" method="post">
                                                                                 @csrf
+                                                                                {!! method_field('delete') !!}
                                                                                 <button type="button" class="btn btn-second" data-dismiss="modal">Tidak</button>
                                                                                 <button type="submit" class="btn btn-prim">Yakin</button>
                                                                             </form>
@@ -179,6 +180,7 @@
                 const answerTitle = answerContainer.previousElementSibling.innerHTML;
                 const formUpdate = `
                     <form action="${e.srcElement.getAttribute('href')}" method="POST" class="form-group my-answer edit-form">
+                        {!! method_field('put') !!}
                         <input type="hidden" name="_token" value="${metaName}">
                         <textarea name="answer" cols="30" rows="10" required>${answerTitle}</textarea>
                         <button class="btn btn-prim">Edit Jawaban</button>

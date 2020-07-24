@@ -29,8 +29,8 @@ Route::get('/home/a', 'HomeController@index_for_answers')->name('home_a');
 Route::prefix('jawaban')->group(function ()
 {
     Route::post('/store','AnswerController@store')->name('answer.store');
-    Route::post('/update/{id}','AnswerController@update')->name('answer.update');
-    Route::post('/delete/{id}','AnswerController@delete')->name('answer.delete');
+    Route::put('/update/{id}','AnswerController@update')->name('answer.update');
+    Route::delete('/delete/{id}','AnswerController@delete')->name('answer.delete');
 });
 
 Route::get('/q', 'QuestionController@index')->name('question');
