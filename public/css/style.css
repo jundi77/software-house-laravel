@@ -8,6 +8,8 @@ p{
 
 body{
     font-family: 'Open Sans';
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 
