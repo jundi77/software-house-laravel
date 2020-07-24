@@ -28,7 +28,13 @@
                     </div>
                 </li>                 
                     <li class="nav-item dropdown" id="dropdown-account">
-                        <img src="{{asset('storage/'.Auth::user()->profile_picture_path)}}" id="profile-pic" alt="">
+                        <img src="
+                        @if(Auth::user()->profile_picture_path != 'NULL')
+                        {{asset('storage/'.Auth::user()->profile_picture_path)}}
+                        @else
+                        {{URL::to('img/default-user-icon.jpg')}}
+                        @endif
+                        " id="profile-pic" alt="">
                         <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu-account">
