@@ -24,8 +24,10 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
+        // dd($request->title);
         Question::create([
-            'question' => $request->question,
+            'title' => $request->title,
+            'description' => $request->description,
             'user_id' => $user_id
         ]);
         return redirect()->back()->with('success','Pertanyaan berhasil ditambahkan');
