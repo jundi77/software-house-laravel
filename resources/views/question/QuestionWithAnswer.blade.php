@@ -43,7 +43,7 @@
                         </div>
                         <div class="question-description">
                             <div class="question-desc">
-                                <p>{{$question->description}}</p>
+                                <p><?php echo nl2br(htmlspecialchars($question->description))?></p>
                                 <!-- edit form  -->
                                 
                                 <div class="modal fade" id="delete-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,7 +89,7 @@
                                     @foreach ($answers as $answer)
                                         <div class="question-summary">
                                             <div class="question">
-                                                <p class="question-title">{{$answer->answer}}</p>
+                                                <p class="question-title"><?php echo nl2br(htmlspecialchars($answer->answer))?></p>
                                                 <div class="answer">
                                                     @if ($answer->user_id == Auth::user()->id)
                                                         <div class="answer-link"style="float: left">
