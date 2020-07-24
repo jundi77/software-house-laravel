@@ -2,6 +2,22 @@
 
 @section('content')
     <section class="question-section">
+        @if (session('success'))
+            <div class="row alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                <strong>{{session('success')}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if (session('failed'))
+            <div class="row alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                <strong>{{session('failed')}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="container">
             <div class="col-md-12">
                 <div class="row">

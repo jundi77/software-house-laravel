@@ -31,6 +31,14 @@
                     </button>
                 </div>
             @endif
+            @if (session('failed'))
+                <div class="row alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                    <strong>{{session('failed')}}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row collapse create-question" style="margin-top: 2rem;">
                 <form class="my-question p-3" action={{route('question.store')}} method="post" style="width:100%; border: 1px solid black;">
                     @csrf
