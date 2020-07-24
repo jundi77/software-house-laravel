@@ -15,7 +15,11 @@
                                     </div>
                                     <div class="question">
                                         <a href="{{route('question.show',['id'=> $question->id])}}" class="question-title">{{$question->title}}</a>
-                                        <p class="question-time">ditanyakan {{$question->created_at->diffForHumans()}} oleh {{$question->user->username}}</p>
+                                        <p class="question-time">
+                                            ditanyakan {{$question->created_at->diffForHumans()}}
+                                            @if($question->updated_at != $question->created_at)<br>diedit {{$question->updated_at->diffForHumans()}}<br>@endif
+                                            oleh {{$question->user->username}}
+                                        </p>
                                     </div>
                                 </div>
                             @empty

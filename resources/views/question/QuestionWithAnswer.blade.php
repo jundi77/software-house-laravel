@@ -24,7 +24,7 @@
                                 <h2>{{$question->title}}</h2>
                                 <button class="btn btn-second">Jawab Pertanyaan</button>
                             </div>
-                            <p style="font-size: 14px">Ditanyakan {{$question->created_at->diffForHumans()}}</p>
+                            <p style="font-size: 14px">Ditanyakan {{$question->created_at->diffForHumans()}}@if($question->updated_at != $question->created_at), diedit {{$question->updated_at->diffForHumans()}}@endif</p>
                             <a class="question-profile" href="">
                                 <img src="{{asset('storage/'. $question->user->profile_picture_path)}}" width="40px" height="40px" alt="">
                                 <p>{{$question->user->username}}</p>
@@ -84,7 +84,7 @@
                                                         </div>
                                                     @endif
                                                     <div>
-                                                        <p class="question-time">dijawab {{$answer->created_at->format('d M Y H:m')}}</p>
+                                                        <p class="question-time">dijawab {{$answer->created_at->format('d M Y H:m')}}@if($answer->updated_at != $answer->created_at)<br>diedit {{$answer->updated_at->format('d M Y H:m')}}@endif</p>
                                                         <a href="" class="question-profile">
                                                             <img src="{{asset('storage/'.$answer->user->profile_picture_path)}}" class="question-profile-image" width="30px" height="30px" alt="">
                                                             <p> {{$answer->user->username}}</p>
