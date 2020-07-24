@@ -7,6 +7,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
+            @auth
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('home_q')}}">Home</a>
@@ -25,15 +26,12 @@
                             </div>
                         </form>
                     </div>
-                </li>
-                @auth                            
+                </li>                 
                     <li class="nav-item dropdown" id="dropdown-account">
                         <img src="{{asset('storage/'.Auth::user()->profile_picture_path)}}" id="profile-pic" alt="">
                         <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu-account">
-                            <a class="dropdown-item">Buat Pertanyaan</a>
-                            <a class="dropdown-item">Another action</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -44,10 +42,10 @@
                             </form>
                         </div>                        
                     </li>
-                    @endauth
                 </ul>
+                @endauth
                 @guest
-                    <div id="navbar-button" class="d-inline ml-4 my-2 my-md-0">
+                    <div id="navbar-button" class="d-inline ml-auto my-2 my-md-0">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                             <a class="btn btn-prim text-prim" href="{{route('register')}}">Daftar</a>
