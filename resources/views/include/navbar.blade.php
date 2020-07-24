@@ -1,7 +1,13 @@
 <nav id="navbar-site" class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:#111111">
     <div class="container">
         <a class="navbar-brand" href="{{route('homepage')}}">
-            <img src="{{URL::to('img/logo2.png')}}" alt="">
+            <p style="
+            font-family: Raleway;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.049em;
+            color: white;
+            ">TanyaAja</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse">
             <span class="navbar-toggler-icon"></span>
