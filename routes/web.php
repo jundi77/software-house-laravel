@@ -45,6 +45,6 @@ Route::prefix('pertanyaan')->group(function()
     })->name('question.show_all');
     Route::get('/{id}', 'QuestionController@showQuestionWithAnswer')->name('question.show');
     Route::post('/store', 'QuestionController@store')->name('question.store');
-    Route::post('/update/{id}', 'QuestionController@update')->name('question.update');
-    Route::post('/delete/{id}', 'QuestionController@delete')->name('question.delete');
+    Route::put('/update/{id}', 'QuestionController@update')->name('question.update');
+    Route::delete('/delete/{id}', 'QuestionController@delete')->name('question.delete');
 });

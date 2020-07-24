@@ -10,6 +10,7 @@ use App\User;
 use App\Answer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class QuestionController extends Controller
@@ -37,7 +38,8 @@ class QuestionController extends Controller
     {
         $question = Question::find($id);
         if($question->user_id == Auth::user()->id) {
-            $question->question = $request->input('question');
+            $question->title = $request->input('title');
+            $question->description = $request->input('description');
             $question->updated_at = Carbon::now();
             $question->save();
             return redirect()->back()->with('success', 'Pertanyaan berhasil diubah');

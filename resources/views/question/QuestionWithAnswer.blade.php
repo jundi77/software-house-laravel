@@ -21,31 +21,59 @@
                         @endif
                         <div class="question-information">
                             <div class="question-header">
-                                <h2>{{$question->title}}</h2>
-                                <button class="btn btn-second">Jawab Pertanyaan</button>
+                                <a href="{{route('question.show', ['id' => $question->id])}}" style="color: black"><h2>{{$question->title}}</h2></a>
+                                <div>
+                                    <button class="btn btn-prim show_button mr-3" data-toggle="collapse" data-target="form.my-question">Edit</a>
+                                    <button class="btn btn-second delete-question" data-toggle="modal" data-target="#delete-question">Hapus</button>
+                                </div>
                             </div>
                             <p style="font-size: 14px">Ditanyakan {{$question->created_at->diffForHumans()}}@if($question->updated_at != $question->created_at), diedit {{$question->updated_at->diffForHumans()}}@endif</p>
-                            <a class="question-profile" href="">
+                            <div class="question-profile">
                                 <img src="{{asset('storage/'. $question->user->profile_picture_path)}}" width="40px" height="40px" alt="">
                                 <p>{{$question->user->username}}</p>
-                            </a>
+                            </div>
                         </div>
-                        <!-- edit form  -->
                         <div class="question-description">
-                                <form class="my-question form-group" >
-                                    @csrf
-                                <h3>Edit Deskripsi</h3>
-                                <textarea cols="50" rows="20" name="text" id="question_id" class="form-control" style="resize:vertical;display:none">{{$question->description}}</textarea>
-                                <input type="hidden" name="question">
-                                <div class="question-link"style="float: right">
-                                    <button class="btn btn-prim show_button">Edit</a>
-                                    <button class="btn btn-second delete-question" data-toggle="modal2" data-target="#exampleModal2">Hapus</button>
-                                </div> 
-                                <script>$(".show_button").click(function(){$("#question_id").show()})</script>
-                            </form>
-                        <!-- end edit form -->
                             <div class="question-desc">
                                 <p>{{$question->description}}</p>
+                                <!-- edit form  -->
+                                
+                                <div class="modal fade" id="delete-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel"><strong>Perhatian</strong></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <strong>Apakah yakin menghapus pertanyaan ini?</strong>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="{{route('question.delete',['id'=> $question->id])}}" method="post">
+                                                    @csrf
+                                                    {!! method_field('delete') !!}
+                                                    <button type="button" class="btn btn-second" data-dismiss="modal">Tidak</button>
+                                                    <button type="submit" class="btn btn-prim">Yakin</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="{{route('question.update',['id' => $question->id])}}" method="post"class="my-question form-group mt-3 collapse" style="border-bottom: 1px solid grey;border-top: 1px solid grey;">
+                                    @csrf
+                                    {{ method_field('PUT') }}
+                                    <h3 class="mt-3">Edit Pertanyaan</h3>
+                                    <hr>
+                                    <div><label for="title">Judul Pertanyaan</label></div>
+                                    <div><input type="text" name="title" id="my-question-title" value="{{$question->title}}" style="width: 100%" required autofocus></div>
+                                    <div><label for="description">Isi Pertanyaan</label></div>
+                                    <div><textarea name="description" id="my-question-description" rows="10" style="width: 100%" required>{{$question->description}}</textarea></div>
+                                    <button class="btn btn-prim mt-3" type="submit">Submit</button>
+                                    <a href="#" class="btn btn-second mt-3" data-toggle="collapse" data-target="form.my-question">Batalkan</a>
+                                </form>
+                        <!-- end edit form -->
                                 <p><strong>{{$answers? $answers->count() : 0}} Jawaban</strong></p>
                             </div>
                             <div class="question-list">
