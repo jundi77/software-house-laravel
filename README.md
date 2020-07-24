@@ -1,5 +1,7 @@
 Penugasan Laravel &amp; Git Software House HMTC ITS:<br/>Web TanyaAja
 =======
+<p align="center"><img src="https://i.ibb.co/R6R4py5/Screenshot-2020-07-25-Tanya-Aja-Selamat-Datang.jpg"></p>
+
 TanyaAja adalah web forum [laravel](#about-laravel) yang mengaplikasikan 4 fungsi dasar [persistent storage](https://en.wikipedia.org/wiki/Persistence_(computer_science)), [CRUD (create, read, update, delete)](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). Untuk menjalankan web, lakukan langkah-langkah sebagai berikut:
     
 1. Sesuaikan config dbmu di file <code>/.env</code>.
