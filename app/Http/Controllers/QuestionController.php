@@ -55,7 +55,7 @@ class QuestionController extends Controller
   
     public function search(Request $request)
     {
-        $questions = Question::where('title', 'like', '%'.$request->search.'%')->paginate(10)->appends(request()->except('page'));
+        $questions = Question::where('title', 'like', '%'.$request->search.'%')->orderBy('created_at','desc')->paginate(10)->appends(request()->except('page'));
         // return dd($request->url());
         return view('question.questionSearch',compact('questions','request'));
     }
