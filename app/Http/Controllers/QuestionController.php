@@ -51,7 +51,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
         if($question->user_id == Auth::user()->id) {
             $question->delete();
-            return redirect()->back()->with('success', 'Pertanyaan berhasil dihapus');
+            return redirect(route('home_q'))->with('success', 'Pertanyaanmu berhasil dihapus');
         }
     }
   
