@@ -1,5 +1,5 @@
 @extends('include.template')
-
+@section('title', 'Pertanyaan Terbaru')
 @section('content')
     <section class="question-section">
         @if (session('success'))

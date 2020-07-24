@@ -1,4 +1,5 @@
 @extends('include.template')
+@section('title', 'Home | Jawabanmu')
 @section('content')
 <section class="question-section">
     <div class="container">

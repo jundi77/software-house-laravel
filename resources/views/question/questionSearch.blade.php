@@ -1,5 +1,5 @@
 @extends('include.template')
-@section('title', 'Mencari')
+@section('title', 'Mencari "'.$request->search.'"')
 @section('content')
     <section class="question-section">
         <div class="container">

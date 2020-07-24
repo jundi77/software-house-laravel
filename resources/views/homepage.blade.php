@@ -1,4 +1,5 @@
 @extends('include.template')
+@section('title', 'Selamat Datang!')
 @section('content')
 <section class="welcome-section">
     <div class="container">
@@ -7,7 +8,7 @@
                 <div class="caption text-center">
                     <h2 class="welcome-text text-white">Komunitas Terbuka TanyaAja</h2>
                     <p class="small-welcome-text">Kami menghubungkan tiap orang yang memiliki rasa penasaran yang tinggi dengan beribu jawaban yang tidak masuk akal</p>
-                    <button class="btn btn-second">Gabung Sekarang</button>
+                    <a href="{{route('register')}}" class="btn btn-second">Gabung Sekarang</a>
                 </div>
             </div>
         </div>
