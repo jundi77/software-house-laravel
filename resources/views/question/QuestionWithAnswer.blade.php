@@ -39,7 +39,11 @@
                             </div>
                             <p style="font-size: 14px">Ditanyakan {{$question->created_at->diffForHumans()}}@if($question->updated_at != $question->created_at), diedit {{$question->updated_at->diffForHumans()}}@endif</p>
                             <div class="question-profile">
+                                @if($question->user->profile_picture_path != 'NULL')
                                 <img src="{{asset('storage/'. $question->user->profile_picture_path)}}" width="40px" height="40px" alt="">
+                                @else 
+                                <img src="{{URL::to('img/default-user-icon.jpg')}}" width="40px" height="40px" alt="">
+                                @endif
                                 <p>{{$question->user->username}}</p>
                             </div>
                         </div>
