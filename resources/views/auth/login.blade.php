@@ -1,5 +1,5 @@
 @extends('include.template')
-
+@section('title', 'Login')
 @section('content')
 <section class="register">
     <div class="container">
