@@ -30,10 +30,12 @@
                         <div class="question-information">
                             <div class="question-header">
                                 <a href="{{route('question.show', ['id' => $question->id])}}" style="color: black"><h2>{{$question->title}}</h2></a>
+                                @if($question->user_id == Auth::user()->id)
                                 <div>
                                     <button class="btn btn-prim show_button mr-3" data-toggle="collapse" data-target="form.my-question">Edit</a>
                                     <button class="btn btn-second delete-question" data-toggle="modal" data-target="#delete-question">Hapus</button>
                                 </div>
+                                @endif
                             </div>
                             <p style="font-size: 14px">Ditanyakan {{$question->created_at->diffForHumans()}}@if($question->updated_at != $question->created_at), diedit {{$question->updated_at->diffForHumans()}}@endif</p>
                             <div class="question-profile">
