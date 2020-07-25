@@ -23,5 +23,6 @@
     <main class="main">        
         @yield('content')
     </main>
+    @include('include.footer')
 </body>
 </html>

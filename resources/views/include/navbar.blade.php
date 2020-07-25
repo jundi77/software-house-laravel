@@ -3,10 +3,11 @@
         <a class="navbar-brand" href="{{route('homepage')}}">
             <p style="
             font-family: Raleway;
-            font-size: 2.5rem;
+            font-size: 40px;
             font-weight: 900;
             letter-spacing: -0.049em;
             color: white;
+            margin-bottom: 0px
             ">TanyaAja</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse">
